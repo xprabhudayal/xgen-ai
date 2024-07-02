@@ -1,4 +1,4 @@
-# XGen-AI Bot 🤖
+# XGen-AI [BOT](https://t.me/x_genai_bot) 🤖 
 
 Welcome to the XGen-AI Bot project! This bot is built with Python, backed by the llama3 model, and integrates with Telegram to provide AI-powered interactions.
 

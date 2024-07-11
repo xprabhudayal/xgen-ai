@@ -2,6 +2,8 @@
 
 Welcome to the XGen-AI Bot project! This bot is built with Python, backed by the llama3 model, and integrates with Telegram to provide AI-powered interactions.
 
+[![xgenai.png](https://i.postimg.cc/Jz3dQcqy/xgenai.png)](https://postimg.cc/ZWRcbNXZ)
+
 ## To run the Bot 🤖, use Colab or SageMaker Studio Lab 
 
 ## Overview 🌟

@@ -49,15 +49,17 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 
 ```
 ## Finetuning ⏲️
-The notebook includes steps for fine-tuning the model using the Alpaca format (chat-based template).
-Here's the graph for the **Training loss vs Step size** of the model 
-[training.png](https://postimg.cc/BLxBc1QJ)
+Here's the graph for the **Training loss vs Step size** 
+
+[![training.png](https://i.postimg.cc/KzWpbn63/training.png)](https://postimg.cc/BLxBc1QJ)
 
 code for the generation of the graph
-'''python
+
+```python
+
 import matplotlib.pyplot as plt
 
-# Data
+
 steps = list(range(1, 61))
 training_loss = [2.327300, 1.431800, 1.671600, 1.828400, 1.723400, 1.448000, 1.125600, 1.661500, 1.715100, 1.380100, 
                  1.507000, 1.364800, 1.737800, 1.650400, 1.277000, 1.182300, 1.039400, 1.073800, 1.294300, 1.574200, 
@@ -66,7 +68,7 @@ training_loss = [2.327300, 1.431800, 1.671600, 1.828400, 1.723400, 1.448000, 1.1
                  1.264400, 1.278900, 1.567100, 1.412500, 1.414700, 1.420700, 1.453300, 1.420000, 1.826700, 1.514000, 
                  1.621700, 1.375200, 1.220700, 1.511000, 1.081900, 1.572400, 1.356300, 1.590700, 1.270300, 1.181600]
 
-# Plotting the data
+
 plt.figure(figsize=(10, 6))
 plt.plot(steps, training_loss, marker='o', linestyle='-', color='b')
 
@@ -76,7 +78,8 @@ plt.ylabel('Training Loss')
 
 plt.grid(True)
 plt.show()
-'''
+
+```
 
 ## Telegram Integration 📱
 The bot integrates with Telegram using the python-telegram-bot library.

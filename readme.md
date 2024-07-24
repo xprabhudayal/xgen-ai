@@ -50,23 +50,33 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 ```
 ## Finetuning ⏲️
 The notebook includes steps for fine-tuning the model using the Alpaca format (chat-based template).
+Here's the graph for the **Training loss vs Step size** of the model 
+[training.png](https://postimg.cc/BLxBc1QJ)
 
-Loading the Alpaca Format
-```python
-from unsloth.chat_templates import get_chat_template
+code for the generation of the graph
+'''python
+import matplotlib.pyplot as plt
 
-tokenizer = get_chat_template(
-    tokenizer,
-    chat_template="llama-3",
-    mapping={"role": "from", "content": "value", "user": "human", "assistant": "gpt"},
-)
+# Data
+steps = list(range(1, 61))
+training_loss = [2.327300, 1.431800, 1.671600, 1.828400, 1.723400, 1.448000, 1.125600, 1.661500, 1.715100, 1.380100, 
+                 1.507000, 1.364800, 1.737800, 1.650400, 1.277000, 1.182300, 1.039400, 1.073800, 1.294300, 1.574200, 
+                 1.330000, 1.223400, 1.462400, 0.993300, 1.279900, 1.369200, 1.244500, 1.300900, 1.339500, 1.317200, 
+                 1.481800, 1.419600, 1.149300, 1.589900, 1.493600, 1.334200, 1.117900, 1.302200, 1.498100, 1.401000, 
+                 1.264400, 1.278900, 1.567100, 1.412500, 1.414700, 1.420700, 1.453300, 1.420000, 1.826700, 1.514000, 
+                 1.621700, 1.375200, 1.220700, 1.511000, 1.081900, 1.572400, 1.356300, 1.590700, 1.270300, 1.181600]
 
-def formatting_prompts_func(examples):
-    convos = examples["conversations"]
-    texts = [tokenizer.apply_chat_template(convo, tokenize=False) for convo in convos]
-    return {"text": texts}
+# Plotting the data
+plt.figure(figsize=(10, 6))
+plt.plot(steps, training_loss, marker='o', linestyle='-', color='b')
 
-```
+plt.title('Training Loss over Steps')
+plt.xlabel('Step')
+plt.ylabel('Training Loss')
+
+plt.grid(True)
+plt.show()
+'''
 
 ## Telegram Integration 📱
 The bot integrates with Telegram using the python-telegram-bot library.
@@ -91,7 +101,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(greet)
 
 async def about(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("xGenAI is an integration of Telegram and Google's generative AI model.")
+    await update.message.reply_text("Hi, I am xGenAI. I'm an enthusiastic assistant and an AI model, backed by Meta Llama3.")
 
 async def generate_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
